@@ -1,0 +1,4 @@
+FROM maven AS spring-boot-mongodb-login-package
+WORKDIR /app
+COPY . .
+RUN mvn package -DskipTests

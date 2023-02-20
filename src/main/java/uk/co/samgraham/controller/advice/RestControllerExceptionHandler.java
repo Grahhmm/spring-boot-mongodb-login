@@ -1,4 +1,4 @@
-package uk.co.samgraham.controller;
+package uk.co.samgraham.controller.advice;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package uk.co.samgraham.security.services;
+package uk.co.samgraham.security.userdetails;
 
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

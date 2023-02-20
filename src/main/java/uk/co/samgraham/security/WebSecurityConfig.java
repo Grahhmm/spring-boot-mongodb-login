@@ -15,7 +15,7 @@ import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import uk.co.samgraham.security.jwt.AuthEntryPointJwt;
 import uk.co.samgraham.security.jwt.AuthTokenFilter;
-import uk.co.samgraham.security.services.UserDetailsServiceImpl;
+import uk.co.samgraham.security.userdetails.UserDetailsServiceImpl;
 
 @Configuration
 @EnableWebSecurity

@@ -1,4 +1,4 @@
-package uk.co.samgraham.security.services;
+package uk.co.samgraham.security.userdetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;

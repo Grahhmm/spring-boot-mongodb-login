@@ -20,8 +20,8 @@ import uk.co.samgraham.payload.response.MessageResponse;
 import uk.co.samgraham.payload.response.UserInfoResponse;
 import uk.co.samgraham.repository.RoleRepository;
 import uk.co.samgraham.repository.UserRepository;
-import uk.co.samgraham.security.jwt.JwtUtils;
-import uk.co.samgraham.security.services.UserDetailsImpl;
+import uk.co.samgraham.security.jwt.JwtService;
+import uk.co.samgraham.security.userdetails.UserDetailsImpl;
 
 import java.util.HashSet;
 import java.util.List;
@@ -38,20 +38,20 @@ public class AuthController {
   UserRepository userRepository;
   RoleRepository roleRepository;
   PasswordEncoder encoder;
-  JwtUtils jwtUtils;
+  JwtService jwtService;
 
   public AuthController(
           AuthenticationManager authenticationManager,
           UserRepository userRepository,
           RoleRepository roleRepository,
           PasswordEncoder encoder,
-          JwtUtils jwtUtils
+          JwtService jwtService
   ) {
     this.authenticationManager = authenticationManager;
     this.userRepository = userRepository;
     this.roleRepository = roleRepository;
     this.encoder = encoder;
-    this.jwtUtils = jwtUtils;
+    this.jwtService = jwtService;
   }
 
   @PostMapping("/signin")
@@ -64,7 +64,7 @@ public class AuthController {
 
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-    ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
+    ResponseCookie jwtCookie = jwtService.generateJwtCookie(userDetails);
 
     List<String> roles = userDetails.getAuthorities().stream()
         .map(GrantedAuthority::getAuthority)

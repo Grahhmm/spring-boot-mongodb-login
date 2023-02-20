@@ -10,15 +10,15 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
-import uk.co.samgraham.security.services.UserDetailsImpl;
+import uk.co.samgraham.security.userdetails.UserDetailsImpl;
 
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 
 @Component
-public class JwtUtils {
-  private static final Logger logger = LoggerFactory.getLogger(JwtUtils.class);
+public class JwtService {
+  private static final Logger logger = LoggerFactory.getLogger(JwtService.class);
 
   private final Key jwtSecret;
 
@@ -26,7 +26,7 @@ public class JwtUtils {
 
   private final String jwtCookie;
 
-  public JwtUtils(
+  public JwtService(
           @Value("${samgraham.app.jwtSecret}") String jwtSecretString,
           @Value("${samgraham.app.jwtExpirationMs}") int jwtExpirationMs,
           @Value("${samgraham.app.jwtCookieName}") String jwtCookie
